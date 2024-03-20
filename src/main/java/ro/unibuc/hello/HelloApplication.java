@@ -47,6 +47,8 @@ public class HelloApplication {
 		doctorRepository.deleteAll();
 		DoctorEntity doctor1 = new DoctorEntity("Gigel Andrei", "cardiolog");
 		doctorRepository.save(doctor1);
+		DoctorEntity doctor2 = new DoctorEntity("Ionel Barbu", "neurolog");
+		doctorRepository.save(doctor2);
 	
         intervalOrarRepository.deleteAll();
 		IntervalOrarEntity intervalOrar1 = new IntervalOrarEntity(8, 0);
@@ -57,9 +59,13 @@ public class HelloApplication {
 		pacientRepository.deleteAll();
 		PacientEntity pacient1 = new PacientEntity("Bobita Stefan");
 		pacientRepository.save(pacient1);
+		PacientEntity pacient2 = new PacientEntity("Marius Dragos");
+		pacientRepository.save(pacient2);
 
 		programareRepository.deleteAll();
         programareRepository.save(new ProgramareEntity(intervalOrar1, doctor1, pacient1, LocalDate.now().plusDays(10)));
-        programareRepository.save(new ProgramareEntity(intervalOrar2, doctor1, pacient1, LocalDate.now().plusDays(10)));	
+        programareRepository.save(new ProgramareEntity(intervalOrar2, doctor1, pacient2, LocalDate.now().plusDays(12)));	
+		programareRepository.save(new ProgramareEntity(intervalOrar2, doctor2, pacient2, LocalDate.now().plusDays(17)));	
+		
 	}
 }
