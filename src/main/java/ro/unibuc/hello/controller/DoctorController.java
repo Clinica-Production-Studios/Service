@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import ro.unibuc.hello.data.DoctorEntity;
-import ro.unibuc.hello.data.PacientEntity;
+import ro.unibuc.hello.data.PatientEntity;
 import ro.unibuc.hello.service.DoctorService;
 
 @RestController
@@ -34,7 +34,7 @@ public class DoctorController {
 
     @GetMapping
     public List<DoctorEntity> getAllDoctors() {
-        return doctorService.getAllDoctori();
+        return doctorService.getAllDoctors();
     }
 
     @PutMapping("/{id}")
@@ -49,7 +49,7 @@ public class DoctorController {
     }
 
     @GetMapping("/{doctorId}/patients")
-    public List<PacientEntity> getPacientiOfDoctor(@PathVariable String doctorId) {
-        return doctorService.findAllPacientiOfDoctor(doctorId);
+    public List<PatientEntity> getPatientsOfDoctor(@PathVariable String doctorId) {
+        return doctorService.findAllPatientsOfDoctor(doctorId);
     }
 }

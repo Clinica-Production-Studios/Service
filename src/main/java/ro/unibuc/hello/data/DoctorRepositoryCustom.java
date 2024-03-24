@@ -4,5 +4,5 @@ import java.util.List;
 
 public interface DoctorRepositoryCustom {
 
-    List<PacientEntity> findAllPacientiOfDoctor(String doctorId);
+    List<PatientEntity> findAllPatientsOfDoctor(String doctorId);
 }

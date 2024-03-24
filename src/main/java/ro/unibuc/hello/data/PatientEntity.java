@@ -2,23 +2,23 @@ package ro.unibuc.hello.data;
 
 import org.springframework.data.annotation.Id;
 
-public class PacientEntity {
+public class PatientEntity {
     @Id
     public String id;
-    public String nume;
+    public String name;
 
-    public PacientEntity() {
+    public PatientEntity() {
     }
 
-    public PacientEntity(String nume) {
-        this.nume = nume;
+    public PatientEntity(String name) {
+        this.name = name;
     }
 
     @Override
     public String toString() {
         return String.format(
-                "Doctor[id=%s, nume='%s']",
-                id, nume);
+                "Patient[id=%s, name='%s']",
+                id, name);
     }
 
     public String getId() {
@@ -29,11 +29,11 @@ public class PacientEntity {
         this.id = id;
     }
 
-    public String getNume() {
-        return nume;
+    public String getName() {
+        return name;
     }
 
-    public void setNume(String nume) {
-        this.nume = nume;
+    public void setName(String name) {
+        this.name = name;
     }
 }
