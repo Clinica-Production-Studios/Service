@@ -12,7 +12,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.client.RestTemplate;
-import ro.unibuc.hello.dto.Greeting;
 import ro.unibuc.hello.e2e.util.HeaderSetup;
 import ro.unibuc.hello.e2e.util.ResponseErrorHandler;
 import ro.unibuc.hello.e2e.util.ResponseResults;
@@ -41,13 +40,6 @@ public class HelloWorldSteps {
     public void the_client_receives_status_code_of(int statusCode) throws Throwable {
         final HttpStatus currentStatusCode = latestResponse.getTheResponse().getStatusCode();
         assertThat("status code is incorrect : " + latestResponse.getBody(), currentStatusCode.value(), is(statusCode));
-    }
-
-    @And("^the client receives response (.+)$")
-    public void the_client_receives_response(String response) throws JsonProcessingException {
-        String latestResponseBody = latestResponse.getBody();
-        Greeting greeting = new ObjectMapper().readValue(latestResponseBody, Greeting.class);
-        assertThat("Response received is incorrect", greeting.getContent(), is(response));
     }
 
     public void executeGet(String url) {

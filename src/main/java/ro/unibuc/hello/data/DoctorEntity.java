@@ -5,22 +5,22 @@ import org.springframework.data.annotation.Id;
 public class DoctorEntity {
     @Id
     public String id;
-    public String nume;
-    public String specializare;
+    public String name;
+    public String specialization;
 
     public DoctorEntity() {
     }
 
-    public DoctorEntity(String nume, String specializare) {
-        this.nume = nume;
-        this.specializare = specializare;
+    public DoctorEntity(String name, String specialization) {
+        this.name = name;
+        this.specialization = specialization;
     }
 
     @Override
     public String toString() {
         return String.format(
-                "Doctor[id=%s, nume='%s', specializare='%s']",
-                id, nume, specializare);
+                "Doctor[id=%s, name='%s', specialization='%s']",
+                id, name, specialization);
     }
 
     public String getId() {
@@ -31,19 +31,19 @@ public class DoctorEntity {
         this.id = id;
     }
 
-    public String getNume() {
-        return nume;
+    public String getName() {
+        return name;
     }
 
-    public void setNume(String nume) {
-        this.nume = nume;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getSpecializare() {
-        return specializare;
+    public String getSpecialization() {
+        return specialization;
     }
 
-    public void setSpecializare(String specializare) {
-        this.specializare = specializare;
+    public void setSpecialization(String specialization) {
+        this.specialization = specialization;
     }
 }
