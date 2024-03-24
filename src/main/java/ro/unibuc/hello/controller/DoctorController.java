@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import ro.unibuc.hello.data.DoctorEntity;
+import ro.unibuc.hello.data.PacientEntity;
 import ro.unibuc.hello.service.DoctorService;
 
 @RestController
@@ -45,5 +46,10 @@ public class DoctorController {
     @DeleteMapping("/{id}")
     public void deleteDoctor(@PathVariable String id) {
         doctorService.deleteDoctor(id);
+    }
+
+    @GetMapping("/{doctorId}/patients")
+    public List<PacientEntity> getPacientiOfDoctor(@PathVariable String doctorId) {
+        return doctorService.findAllPacientiOfDoctor(doctorId);
     }
 }

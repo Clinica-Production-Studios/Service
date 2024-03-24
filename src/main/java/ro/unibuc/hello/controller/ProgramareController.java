@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import ro.unibuc.hello.data.ProgramareEntity;
@@ -46,4 +47,29 @@ public class ProgramareController {
     public void deleteProgramare(@PathVariable String id) {
         programareService.deleteProgramare(id);
     }
+
+    @GetMapping("/doctor/{doctorId}")
+    public List<ProgramareEntity> getProgramariOfDoctor(@PathVariable String doctorId) {
+        return programareService.getProgramariOfDoctor(doctorId);
+    }
+
+    @GetMapping("/pacient/{pacientId}")
+    public List<ProgramareEntity> getProgramariOfPacient(@PathVariable String pacientId) {
+        return programareService.getProgramariOfPacient(pacientId);
+    }
+
+    @GetMapping("/doctor/{doctorId}/date-range")
+    public List<ProgramareEntity> getProgramariOfDoctorWithinDateRange(@PathVariable String doctorId,
+                                                                         @RequestParam("startDate") String startDate,
+                                                                         @RequestParam("endDate") String endDate) {
+        return programareService.getProgramariOfDoctorWithinDateRange(doctorId, startDate, endDate);
+    }
+
+    @GetMapping("/pacient/{pacientId}/date-range")
+    public List<ProgramareEntity> getProgramariOfPacientWithinDateRange(@PathVariable String pacientId,
+                                                                         @RequestParam("startDate") String startDate,
+                                                                         @RequestParam("endDate") String endDate) {
+        return programareService.getProgramariOfPacientWithinDateRange(pacientId, startDate, endDate);
+    }
+
 }
