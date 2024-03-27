@@ -1,7 +1,6 @@
 package ro.unibuc.hello.data;
 
 import java.time.LocalDate;
-
 import org.springframework.data.annotation.Id;
 
 public class AppointmentEntity {

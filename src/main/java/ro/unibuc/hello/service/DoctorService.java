@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import ro.unibuc.hello.data.DoctorEntity;
 import ro.unibuc.hello.data.DoctorRepository;
 import ro.unibuc.hello.data.DoctorRepositoryCustom;
-import ro.unibuc.hello.data.PatientEntity;
+import ro.unibuc.hello.dto.DoctorPatients;
 import ro.unibuc.hello.exception.EntityNotFoundException;
 
 @Service
@@ -43,8 +43,15 @@ public class DoctorService {
         doctorRepository.delete(doctor);
     }
 
-    public List<PatientEntity> findAllPatientsOfDoctor(String doctorId) {
-        doctorRepository.findById(doctorId).orElseThrow(() -> new EntityNotFoundException("doctor"));
-        return doctorRepositoryCustom.findAllPatientsOfDoctor(doctorId);
+    public DoctorPatients findAllPatientsOfDoctor(String doctorId) {
+        DoctorEntity doctorEntity = doctorRepository.findById(doctorId).orElseThrow(() -> new EntityNotFoundException("doctor"));
+        
+        DoctorPatients doctor = new DoctorPatients();
+        doctor.setId(doctorEntity.getId());
+        doctor.setName(doctorEntity.getName());
+        doctor.setSpecialization(doctorEntity.getSpecialization());
+        doctor.setPacients(doctorRepositoryCustom.findAllPatientsOfDoctor(doctorId));
+
+        return doctor;
     }
 }

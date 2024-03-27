@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import ro.unibuc.hello.data.DoctorEntity;
-import ro.unibuc.hello.data.PatientEntity;
+import ro.unibuc.hello.dto.DoctorPatients;
 import ro.unibuc.hello.service.DoctorService;
 
 @RestController
@@ -49,7 +49,7 @@ public class DoctorController {
     }
 
     @GetMapping("/{doctorId}/patients")
-    public List<PatientEntity> getPatientsOfDoctor(@PathVariable String doctorId) {
+    public DoctorPatients getPatientsOfDoctor(@PathVariable String doctorId) {
         return doctorService.findAllPatientsOfDoctor(doctorId);
     }
 }
