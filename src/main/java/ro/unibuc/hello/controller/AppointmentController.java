@@ -1,6 +1,9 @@
 package ro.unibuc.hello.controller;
 
 import java.util.List;
+
+import javax.validation.Valid;
+
 import java.time.LocalDate;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import ro.unibuc.hello.data.AppointmentEntity;
+import ro.unibuc.hello.dto.Appointment;
 import ro.unibuc.hello.service.AppointmentService;
 
 @RestController
@@ -24,22 +27,22 @@ public class AppointmentController {
     private AppointmentService appointmentService;
 
     @PostMapping
-    public AppointmentEntity createAppointment(@RequestBody AppointmentEntity appointment) {
+    public Appointment createAppointment(@RequestBody @Valid Appointment appointment) {
         return appointmentService.createAppointment(appointment);
     }
 
     @GetMapping("/{id}")
-    public AppointmentEntity getAppointmentById(@PathVariable String id) {
+    public Appointment getAppointmentById(@PathVariable String id) {
         return appointmentService.getAppointmentById(id);
     }
 
     @GetMapping
-    public List<AppointmentEntity> getAllAppointments() {
+    public List<Appointment> getAllAppointments() {
         return appointmentService.getAllAppointments();
     }
 
     @PutMapping("/{id}")
-    public AppointmentEntity updateAppointment(@PathVariable String id, @RequestBody AppointmentEntity appointment) {
+    public Appointment updateAppointment(@PathVariable String id, @RequestBody @Valid Appointment appointment) {
         appointment.setId(id);
         return appointmentService.updateAppointment(appointment);
     }
@@ -50,24 +53,24 @@ public class AppointmentController {
     }
 
     @GetMapping("/doctor/{doctorId}")
-    public List<AppointmentEntity> getAppointmentsOfDoctor(@PathVariable String doctorId) {
+    public List<Appointment> getAppointmentsOfDoctor(@PathVariable String doctorId) {
         return appointmentService.getAppointmentsOfDoctor(doctorId);
     }
 
     @GetMapping("/patient/{patientId}")
-    public List<AppointmentEntity> getAppointmentsOfPatient(@PathVariable String patientId) {
+    public List<Appointment> getAppointmentsOfPatient(@PathVariable String patientId) {
         return appointmentService.getAppointmentsOfPatient(patientId);
     }
 
     @GetMapping("/doctor/{doctorId}/date-range")
-    public List<AppointmentEntity> getAppointmentsOfDoctorWithinDateRange(@PathVariable String doctorId,
+    public List<Appointment> getAppointmentsOfDoctorWithinDateRange(@PathVariable String doctorId,
                                                                          @RequestParam LocalDate startDate,
                                                                          @RequestParam LocalDate endDate) {
         return appointmentService.getAppointmentsOfDoctorWithinDateRange(doctorId, startDate, endDate);
     }
 
     @GetMapping("/patient/{patientId}/date-range")
-    public List<AppointmentEntity> getAppointmentsOfPatientWithinDateRange(@PathVariable String patientId,
+    public List<Appointment> getAppointmentsOfPatientWithinDateRange(@PathVariable String patientId,
                                                                          @RequestParam LocalDate startDate,
                                                                          @RequestParam LocalDate endDate) {
         return appointmentService.getAppointmentsOfPatientWithinDateRange(patientId, startDate, endDate);
