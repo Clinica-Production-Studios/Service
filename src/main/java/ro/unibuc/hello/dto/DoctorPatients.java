@@ -2,22 +2,26 @@ package ro.unibuc.hello.dto;
 
 import java.util.List;
 
-import ro.unibuc.hello.data.PatientEntity;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 public class DoctorPatients {
     private String id;
+    @NotBlank
     private String name;
+    @NotBlank
     private String specialization;
-    private List<PatientEntity> pacients;
+    @NotNull
+    private List<Patient> patients;
 
     public DoctorPatients() {
     }
 
-    public DoctorPatients(String id, String name, String specialization, List<PatientEntity> pacients) {
+    public DoctorPatients(String id, String name, String specialization, List<Patient> patients) {
         this.id = id;
         this.name = name;
         this.specialization = specialization;
-        this.pacients = pacients;
+        this.patients = patients;
     }
 
     public String getId() {
@@ -44,11 +48,12 @@ public class DoctorPatients {
         this.specialization = specialization;
     }
 
-    public List<PatientEntity> getPacients() {
-        return pacients;
+    public List<Patient> getPatients() {
+        return patients;
     }
 
-    public void setPacients(List<PatientEntity> pacients) {
-        this.pacients = pacients;
+    public void setPatients(List<Patient> patients) {
+        this.patients = patients;
     }
+
 }

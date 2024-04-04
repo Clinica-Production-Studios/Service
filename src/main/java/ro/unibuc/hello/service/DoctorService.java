@@ -1,15 +1,19 @@
 package ro.unibuc.hello.service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import ro.unibuc.hello.dto.Doctor;
 import ro.unibuc.hello.data.DoctorEntity;
 import ro.unibuc.hello.data.DoctorRepository;
 import ro.unibuc.hello.data.DoctorRepositoryCustom;
 import ro.unibuc.hello.dto.DoctorPatients;
 import ro.unibuc.hello.exception.EntityNotFoundException;
+import ro.unibuc.hello.mapper.DoctorMapper;
+import ro.unibuc.hello.mapper.PatientMapper;
 
 @Service
 public class DoctorService {
@@ -18,40 +22,44 @@ public class DoctorService {
     @Autowired
     private DoctorRepositoryCustom doctorRepositoryCustom;
 
-    public DoctorEntity createDoctor(DoctorEntity doctor) {
+    public Doctor createDoctor(Doctor doctor) {
         doctor.setId(null);
-        doctorRepository.save(doctor);
-        return doctor;
+        DoctorEntity doctorEntity = doctorRepository.save(DoctorMapper.getInstance().toEntity(doctor));
+        return DoctorMapper.getInstance().toDto(doctorEntity);
     }
 
-    public DoctorEntity getDoctorById(String id) {
-        return doctorRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("doctor"));    
+    public Doctor getDoctorById(String id) {
+        return DoctorMapper.getInstance()
+                .toDto(doctorRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("doctor")));
     }
 
-    public List<DoctorEntity> getAllDoctors() {
-        return doctorRepository.findAll();    
+    public List<Doctor> getAllDoctors() {
+        return doctorRepository.findAll().stream().map(DoctorMapper.getInstance()::toDto).collect(Collectors.toList());
     }
 
-    public DoctorEntity updateDoctor(DoctorEntity doctor) {
-        doctorRepository.findById(doctor.getId()).orElseThrow(() -> new EntityNotFoundException("doctor"));   
-        doctorRepository.save(doctor);
-        return doctor;
+    public Doctor updateDoctor(Doctor doctor) {
+        doctorRepository.findById(doctor.getId()).orElseThrow(() -> new EntityNotFoundException("doctor"));
+        DoctorEntity doctorEntity = doctorRepository.save(DoctorMapper.getInstance().toEntity(doctor));
+        return DoctorMapper.getInstance().toDto(doctorEntity);
     }
 
     public void deleteDoctor(String id) {
-        DoctorEntity doctor = doctorRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("doctor"));   
-        doctorRepository.delete(doctor);
+        DoctorEntity doctorEntity = doctorRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("doctor"));
+        doctorRepository.delete(doctorEntity);
     }
 
     public DoctorPatients findAllPatientsOfDoctor(String doctorId) {
-        DoctorEntity doctorEntity = doctorRepository.findById(doctorId).orElseThrow(() -> new EntityNotFoundException("doctor"));
-        
-        DoctorPatients doctor = new DoctorPatients();
-        doctor.setId(doctorEntity.getId());
-        doctor.setName(doctorEntity.getName());
-        doctor.setSpecialization(doctorEntity.getSpecialization());
-        doctor.setPacients(doctorRepositoryCustom.findAllPatientsOfDoctor(doctorId));
+        Doctor doctor = DoctorMapper.getInstance()
+                .toDto(doctorRepository.findById(doctorId).orElseThrow(() -> new EntityNotFoundException("doctor")));
 
-        return doctor;
+        DoctorPatients doctorPatients = new DoctorPatients();
+        doctorPatients.setId(doctor.getId());
+        doctorPatients.setName(doctor.getName());
+        doctorPatients.setSpecialization(doctor.getSpecialization());
+        doctorPatients.setPatients(doctorRepositoryCustom.findAllPatientsOfDoctor(doctorId).stream()
+                .map(PatientMapper.getInstance()::toDto).collect(Collectors.toList()));
+
+        return doctorPatients;
     }
 }

@@ -2,6 +2,8 @@ package ro.unibuc.hello.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import ro.unibuc.hello.data.PatientEntity;
+import ro.unibuc.hello.dto.Patient;
 import ro.unibuc.hello.service.PatientService;
 
 @RestController
@@ -22,22 +24,22 @@ public class PatientController {
     private PatientService patientService;
 
     @PostMapping
-    public PatientEntity createPatient(@RequestBody PatientEntity patient) {
+    public Patient createPatient(@RequestBody @Valid Patient patient) {
         return patientService.createPatient(patient);
     }
 
     @GetMapping("/{id}")
-    public PatientEntity getPatientById(@PathVariable String id) {
+    public Patient getPatientById(@PathVariable String id) {
         return patientService.getPatientById(id);
     }
 
     @GetMapping
-    public List<PatientEntity> getAllPatienti() {
+    public List<Patient> getAllPatienti() {
         return patientService.getAllPatienti();
     }
 
     @PutMapping("/{id}")
-    public PatientEntity updatePatient(@PathVariable String id, @RequestBody PatientEntity patient) {
+    public Patient updatePatient(@PathVariable String id, @RequestBody @Valid Patient patient) {
         patient.setId(id);
         return patientService.updatePatient(patient);
     }

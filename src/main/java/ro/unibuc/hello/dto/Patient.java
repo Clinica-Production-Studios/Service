@@ -2,21 +2,17 @@ package ro.unibuc.hello.dto;
 
 import javax.validation.constraints.NotBlank;
 
-public class Doctor {
+public class Patient {
     private String id;
     @NotBlank
     private String name;
-    @NotBlank
-    private String specialization;
 
-
-    public Doctor() {
+    public Patient() {
     }
 
-    public Doctor(String id, String name, String specialization) {
+    public Patient(String id, String name) {
         this.id = id;
         this.name = name;
-        this.specialization = specialization;
     }
 
     public String getId() {
@@ -35,13 +31,4 @@ public class Doctor {
         this.name = name;
     }
 
-    public String getSpecialization() {
-        return specialization;
-    }
-
-    public void setSpecialization(String specialization) {
-        this.specialization = specialization;
-    }
-
-    
 }
