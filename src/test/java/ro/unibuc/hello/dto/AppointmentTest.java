@@ -1,6 +1,5 @@
 package ro.unibuc.hello.dto;
 
-import org.assertj.core.api.LocalDateAssert;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 
