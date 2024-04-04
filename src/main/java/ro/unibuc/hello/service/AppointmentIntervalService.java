@@ -6,8 +6,6 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.fasterxml.jackson.databind.introspect.AnnotationMap;
-
 import ro.unibuc.hello.dto.AppointmentInterval;
 import ro.unibuc.hello.data.AppointmentIntervalEntity;
 import ro.unibuc.hello.data.AppointmentIntervalRepository;

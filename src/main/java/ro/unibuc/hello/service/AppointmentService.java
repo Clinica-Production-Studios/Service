@@ -22,7 +22,7 @@ public class AppointmentService {
         appointment.setId(null);
         AppointmentEntity appointmentEntity = appointmentRepository
                 .save(AppointmentMapper.getInstance().toEntity(appointment));
-        return appointment;
+        return AppointmentMapper.getInstance().toDto(appointmentEntity);
     }
 
     public Appointment getAppointmentById(String id) {

@@ -28,7 +28,7 @@ public class PatientService {
                 .toDto(patientRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("patient")));
     }
 
-    public List<Patient> getAllPatienti() {
+    public List<Patient> getAllPatients() {
         return patientRepository.findAll().stream().map(PatientMapper.getInstance()::toDto)
                 .collect(Collectors.toList());
     }
