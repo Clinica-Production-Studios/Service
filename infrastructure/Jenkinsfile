@@ -1,13 +1,43 @@
 pipeline {
     agent any
+
     environment {
-        DOCKER_PASSWORD = credentials("docker_password")
+        // Retrieve Docker credentials
+        DOCKER_CREDENTIALS = credentials("docker_password")
+        DOCKER_USERNAME = "${DOCKER_CREDENTIALS_USR}" // Assuming the credential ID is "docker_password"
+        DOCKER_PASSWORD = "${DOCKER_CREDENTIALS_PSW}" // Assuming the credential ID is "docker_password"
+
+        
+        // Extract version components from git tags
+        GIT_TAG = sh([script: 'git fetch --tag && git tag', returnStdout: true]).trim()
+        MAJOR_VERSION = sh([script: 'git tag | cut -d . -f 1', returnStdout: true]).trim()
+        MINOR_VERSION = sh([script: 'git tag | cut -d . -f 2', returnStdout: true]).trim()
+        PATCH_VERSION = sh([script: 'git tag | cut -d . -f 3', returnStdout: true]).trim()
+        
+        // Increment minor version
+        NEW_MINOR_VERSION = "${MINOR_VERSION.toInteger() + 1}"
+        
+        // Construct image version for build and tag
+        IMAGE_VERSION_BUILD = "${MAJOR_VERSION}.${NEW_MINOR_VERSION}.${PATCH_VERSION}"
+        IMAGE_VERSION_TAG = "${MAJOR_VERSION}.${MINOR_VERSION}.${PATCH_VERSION}"
     }
 
     stages {
-        stage('Build & Test') {
+        stage('Build & Publish') {
             steps {
-                sh './gradlew clean build'
+                // Build Docker image
+                script {
+                    def dockerImage = docker.build("${DOCKER_USERNAME}/hello-img:${IMAGE_VERSION_BUILD}", "-f /Dockerfile .")
+                    
+                    // Tag Docker image
+                    dockerImage.tag("${DOCKER_USERNAME}/hello-img:${IMAGE_VERSION_TAG}")
+                    
+                    // Login to Docker registry and push both images
+                    docker.withRegistry('https://index.docker.io/v1/', "${DOCKER_USERNAME}", "${DOCKER_PASSWORD}") {
+                        dockerImage.push()
+                        docker.image("${DOCKER_USERNAME}/hello-img:${IMAGE_VERSION_TAG}").push()
+                    }
+                }
             }
         }
     }

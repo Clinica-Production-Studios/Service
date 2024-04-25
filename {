@@ -1,0 +1,49 @@
+Script started on 2024-04-25 21:00:12+00:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="210" LINES="16"]
+                    def dockerImage = docker.build("${DOCKER_USERNAME}/hello-img:${IMAGE_VERSION_BUILD}", "-f /Dockerfile .")
+                    
+                    // Tag Docker image
+                    dockerImage.tag("${DOCKER_USERNAME}/hello-img:${IMAGE_VERSION_TAG}")
+                    
+                    // Login to Docker registry and push both images
+                    docker.withRegistry('https://index.docker.io/v1/', "${DOCKER_USERNAME}", "${DOCKER_PASSWORD}") {
+                        dockerImage.push()
+                        docker.image("${DOCKER_USERNAME}/hello-img:${IMAGE_VERSION_TAG}").push()
+                    }
+                }
+            }
+        }
+    }
+}
+[0;32m@Alexu33 [0m➜ [1;34m/workspaces/Service [0;36m([1;31mCI/Jenkins[0;36m) [0m$                     def dockerImage = docker.build("${DOCKER_USERNAME}/hello-img:${IMAGE_VERSION_BUILD}", "-f /Dockerfile .")
+bash: syntax error near unexpected token `('
+[0;32m@Alexu33 [1;31m➜ [1;34m/workspaces/Service [0;36m([1;31mCI/Jenkins[0;36m) [0m$                     
+[0;32m@Alexu33 [1;31m➜ [1;34m/workspaces/Service [0;36m([1;31mCI/Jenkins[0;36m) [0m$                     // Tag Docker image
+bash: //: Is a directory
+[0;32m@Alexu33 [1;31m➜ [1;34m/workspaces/Service [0;36m([1;31mCI/Jenkins[0;36m) [0m$                     dockerImage.tag("${DOCKER_USERNAME}/hello-img:${IMAGE_VERSION_TAG}")
+bash: syntax error near unexpected token `"${DOCKER_USERNAME}/hello-img:${IMAGE_VERSION_TAG}"'
+[0;32m@Alexu33 [1;31m➜ [1;34m/workspaces/Service [0;36m([1;31mCI/Jenkins[0;36m) [0m$                     
+[0;32m@Alexu33 [1;31m➜ [1;34m/workspaces/Service [0;36m([1;31mCI/Jenkins[0;36m) [0m$                     // Login to Docker registry and push both images
+bash: //: Is a directory
+[0;32m@Alexu33 [1;31m➜ [1;34m/workspaces/Service [0;36m([1;31mCI/Jenkins[0;36m) [0m$                     docker.withRegistry('https://index.docker.io/v1/', "${DOCKER_USERNAME}", "${DOCKER_PASSWORD}") {
+bash: syntax error near unexpected token `'https://index.docker.io/v1/','
+[0;32m@Alexu33 [1;31m➜ [1;34m/workspaces/Service [0;36m([1;31mCI/Jenkins[0;36m) [0m$                         dockerImage.push()
+>                         docker.image("${DOCKER_USERNAME}/hello-img:${IMAGE_VERSION_TAG}").push()
+bash: syntax error near unexpected token `docker.image'
+[0;32m@Alexu33 [1;31m➜ [1;34m/workspaces/Service [0;36m([1;31mCI/Jenkins[0;36m) [0m$                     }
+bash: syntax error near unexpected token `}'
+[0;32m@Alexu33 [1;31m➜ [1;34m/workspaces/Service [0;36m([1;31mCI/Jenkins[0;36m) [0m$                 }
+bash: syntax error near unexpected token `}'
+[0;32m@Alexu33 [1;31m➜ [1;34m/workspaces/Service [0;36m([1;31mCI/Jenkins[0;36m) [0m$             }
+bash: syntax error near unexpected token `}'
+[0;32m@Alexu33 [1;31m➜ [1;34m/workspaces/Service [0;36m([1;31mCI/Jenkins[0;36m) [0m$         }
+bash: syntax error near unexpected token `}'
+[0;32m@Alexu33 [1;31m➜ [1;34m/workspaces/Service [0;36m([1;31mCI/Jenkins[0;36m) [0m$     }
+bash: syntax error near unexpected token `}'
+[0;32m@Alexu33 [1;31m➜ [1;34m/workspaces/Service [0;36m([1;31mCI/Jenkins[0;36m) [0m$ }
+bash: syntax error near unexpected token `}'
+[0;32m@Alexu33 [1;31m➜ [1;34m/workspaces/Service [0;36m([1;31mCI/Jenkins[0;36m) [0m$ git commit -m "A[KModifiy[K[K[K[K[K[K[KUP[Kpdate Jenkins pipeline[K[K Pipeline [K[K[K[K[K[K[K[K[K[Kfile"
+[CI/Jenkins 906d6c5] Update Jenkinsfile
+ 2 files changed, 107 insertions(+)
+ create mode 100644 src/test/java/ro/unibuc/hello/controller/AppointmentIntervalControllerTest.java
+ create mode 100644 src/test/java/ro/unibuc/hello/service/AppointmentIntervalServiceTest.java
+[0;32m@Alexu33 [0m➜ [1;34m/workspaces/Service [0;36m([1;31mCI/Jenkins[0;36m) [0m$ git push [K[K[K[K[K[K
