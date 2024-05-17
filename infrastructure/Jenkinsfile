@@ -45,5 +45,14 @@ pipeline {
             }
 
         }
+
+        stage("Integration tests")
+        {
+            steps {
+                script {
+                    sh "./gradlew testE2E"
+                }
+            }
+        }
     }
 }
