@@ -1,4 +1,0 @@
-org folder Clinica Service/Service/CI%2FJenkins
-inica_Service_Service_CI_Jenkins
-org folder Clinica Service/Service/main
-der_Clinica_Service_Service_main

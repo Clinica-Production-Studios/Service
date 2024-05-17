@@ -1,3 +1,0 @@
-[filesystem "Eclipse Adoptium|17.0.10|/dev/loop3"]
-	timestampResolution = 2683 nanoseconds
-	minRacyThreshold = 5771 microseconds
