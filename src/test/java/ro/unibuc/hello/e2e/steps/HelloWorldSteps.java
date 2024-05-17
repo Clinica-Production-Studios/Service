@@ -1,58 +1,58 @@
-// package ro.unibuc.hello.e2e.steps;
+package ro.unibuc.hello.e2e.steps;
 
 
-// import io.cucumber.java.en.Given;
-// import io.cucumber.java.en.Then;
-// import io.cucumber.spring.CucumberContextConfiguration;
-// import org.springframework.beans.factory.annotation.Autowired;
-// import org.springframework.boot.test.context.SpringBootTest;
-// import org.springframework.http.HttpMethod;
-// import org.springframework.http.HttpStatus;
-// import org.springframework.web.client.RestTemplate;
-// import ro.unibuc.hello.e2e.util.HeaderSetup;
-// import ro.unibuc.hello.e2e.util.ResponseErrorHandler;
-// import ro.unibuc.hello.e2e.util.ResponseResults;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.spring.CucumberContextConfiguration;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.client.RestTemplate;
+import ro.unibuc.hello.e2e.util.HeaderSetup;
+import ro.unibuc.hello.e2e.util.ResponseErrorHandler;
+import ro.unibuc.hello.e2e.util.ResponseResults;
 
-// import java.util.HashMap;
-// import java.util.Map;
+import java.util.HashMap;
+import java.util.Map;
 
-// import static org.hamcrest.MatcherAssert.assertThat;
-// import static org.hamcrest.Matchers.is;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.is;
 
-// @CucumberContextConfiguration
-// @SpringBootTest()
-// public class HelloWorldSteps {
+@CucumberContextConfiguration
+@SpringBootTest()
+public class HelloWorldSteps {
 
-//     public static ResponseResults latestResponse = null;
+    public static ResponseResults latestResponse = null;
 
-//     @Autowired
-//     protected RestTemplate restTemplate;
+    @Autowired
+    protected RestTemplate restTemplate;
 
-//     @Given("^the client calls /hello-world")
-//     public void the_client_issues_GET_hello() {
-//         executeGet("http://localhost:8080/hello-world");
-//     }
+    @Given("^the client calls /hello-world")
+    public void the_client_issues_GET_hello() {
+        executeGet("http://localhost:8080/hello-world");
+    }
 
-//     @Then("^the client receives status code of (\\d+)$")
-//     public void the_client_receives_status_code_of(int statusCode) throws Throwable {
-//         final HttpStatus currentStatusCode = latestResponse.getTheResponse().getStatusCode();
-//         assertThat("status code is incorrect : " + latestResponse.getBody(), currentStatusCode.value(), is(statusCode));
-//     }
+    @Then("^the client receives status code of (\\d+)$")
+    public void the_client_receives_status_code_of(int statusCode) throws Throwable {
+        final HttpStatus currentStatusCode = latestResponse.getTheResponse().getStatusCode();
+        assertThat("status code is incorrect : " + latestResponse.getBody(), currentStatusCode.value(), is(statusCode));
+    }
 
-//     public void executeGet(String url) {
-//         final Map<String, String> headers = new HashMap<>();
-//         headers.put("Accept", "application/json");
-//         final HeaderSetup requestCallback = new HeaderSetup(headers);
-//         final ResponseErrorHandler errorHandler = new ResponseErrorHandler();
+    public void executeGet(String url) {
+        final Map<String, String> headers = new HashMap<>();
+        headers.put("Accept", "application/json");
+        final HeaderSetup requestCallback = new HeaderSetup(headers);
+        final ResponseErrorHandler errorHandler = new ResponseErrorHandler();
 
-//         restTemplate.setErrorHandler(errorHandler);
-//         latestResponse = restTemplate.execute(url, HttpMethod.GET, requestCallback, response -> {
-//             if (errorHandler.getHadError()) {
-//                 return (errorHandler.getResults());
-//             } else {
-//                 return (new ResponseResults(response));
-//             }
-//         });
-//     }
+        restTemplate.setErrorHandler(errorHandler);
+        latestResponse = restTemplate.execute(url, HttpMethod.GET, requestCallback, response -> {
+            if (errorHandler.getHadError()) {
+                return (errorHandler.getResults());
+            } else {
+                return (new ResponseResults(response));
+            }
+        });
+    }
 
-// }
+}
