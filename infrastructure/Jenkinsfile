@@ -46,14 +46,14 @@ pipeline {
 
         }
 
-        stage("Integration tests")
-        {
-            steps {
-                script {
-                    // nu merge
-                    // sh "./gradlew testE2E"
-                }
-            }
-        }
+        // stage("Integration tests")
+        // {
+        //     steps {
+        //         script {
+        //             // nu merge
+        //             // sh "./gradlew testE2E"
+        //         }
+        //     }
+        // }
     }
 }
