@@ -16,6 +16,14 @@ pipeline {
             }
         }
 
+        stage('Fetch tag')
+        {
+            steps {
+                "IMAGE_TAG=${env.IMAGE_TAG} docker compose up -d hello mongo"
+            }
+
+        }
+
         stage('Tag image') {
             steps {
                 script {
@@ -26,7 +34,7 @@ pipeline {
                     env.IMAGE_TAG = "${env.MAJOR_VERSION}.\$((${env.MINOR_VERSION} + 1)).${env.PATCH_VERSION}"
                 }
 
-                sh "docker build -t ${DOCKER_USERNAME}/hello-img:${MAJOR_VERSION}.\$((${MINOR_VERSION} + 1)).${PATCH_VERSION} -f /Dockerfile ."
+                sh "docker build -t ${DOCKER_USERNAME}/hello-img:${env.IMAGE_TAG} -f /Dockerfile ."
 
                 sh "git tag ${env.IMAGE_TAG}"
                 sh "git push https://${GITHUB_TOKEN_PSW}@github.com/Clinica-Production-Studios/service.git ${env.IMAGE_TAG}"
