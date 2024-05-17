@@ -1,0 +1,98 @@
+Started by user [8mha:////4O2qz3eT3xEH6+WqYulssEO1c+zly3SIcIwd9MVDkfrHAAAAlx+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAzWEgZu/dLi1CL9xJTczDwAj6GcLcAAAAA=[0madmin
+Running as SYSTEM
+Building in workspace /var/jenkins_home/workspace/Clinica-Production-Studios
+The recommended git tool is: NONE
+No credentials specified
+ > git rev-parse --resolve-git-dir /var/jenkins_home/workspace/Clinica-Production-Studios/.git # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/Clinica-Production-Studios/Service # timeout=10
+Fetching upstream changes from https://github.com/Clinica-Production-Studios/Service
+ > git --version # timeout=10
+ > git --version # 'git version 2.39.2'
+ > git fetch --tags --force --progress -- https://github.com/Clinica-Production-Studios/Service +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/main^{commit} # timeout=10
+Checking out Revision 0be972ebca1904d2c7779b95b8dfcc9957465ad9 (refs/remotes/origin/main)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 0be972ebca1904d2c7779b95b8dfcc9957465ad9 # timeout=10
+Commit message: "Merge pull request #6 from Clinica-Production-Studios/integration-tests"
+ > git rev-list --no-walk 0be972ebca1904d2c7779b95b8dfcc9957465ad9 # timeout=10
+[Gradle] - Launching build.
+[Clinica-Production-Studios] $ /var/jenkins_home/tools/hudson.plugins.gradle.GradleInstallation/gradle-7.6.4/bin/gradle clean build
+Starting a Gradle Daemon (subsequent builds will be faster)
+[8mha:////4MHniG3Tiw97emlJL2m+AVdfEvDfL1Yrjdu5MaK5vM0jAAAAYB+LCAAAAAAAAP9b85aBtbiIQSWjNKU4P0+vIKc0PTOvWC+9KDElJ1XPHUyFJBZn++WXpCqzh62PfDo/h4mBoaKIQQqqJTk/rzgfqNYZQoMUMkAAI0hhAQASWqbMYgAAAA==[0m> Task :clean
+
+[8mha:////4MHniG3Tiw97emlJL2m+AVdfEvDfL1Yrjdu5MaK5vM0jAAAAYB+LCAAAAAAAAP9b85aBtbiIQSWjNKU4P0+vIKc0PTOvWC+9KDElJ1XPHUyFJBZn++WXpCqzh62PfDo/h4mBoaKIQQqqJTk/rzgfqNYZQoMUMkAAI0hhAQASWqbMYgAAAA==[0m> Task :compileJava
+Note: /var/jenkins_home/workspace/Clinica-Production-Studios/src/main/java/ro/unibuc/hello/data/MongoConfig.java uses unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+
+[8mha:////4MHniG3Tiw97emlJL2m+AVdfEvDfL1Yrjdu5MaK5vM0jAAAAYB+LCAAAAAAAAP9b85aBtbiIQSWjNKU4P0+vIKc0PTOvWC+9KDElJ1XPHUyFJBZn++WXpCqzh62PfDo/h4mBoaKIQQqqJTk/rzgfqNYZQoMUMkAAI0hhAQASWqbMYgAAAA==[0m> Task :processResources
+[8mha:////4MHniG3Tiw97emlJL2m+AVdfEvDfL1Yrjdu5MaK5vM0jAAAAYB+LCAAAAAAAAP9b85aBtbiIQSWjNKU4P0+vIKc0PTOvWC+9KDElJ1XPHUyFJBZn++WXpCqzh62PfDo/h4mBoaKIQQqqJTk/rzgfqNYZQoMUMkAAI0hhAQASWqbMYgAAAA==[0m> Task :classes
+[8mha:////4MHniG3Tiw97emlJL2m+AVdfEvDfL1Yrjdu5MaK5vM0jAAAAYB+LCAAAAAAAAP9b85aBtbiIQSWjNKU4P0+vIKc0PTOvWC+9KDElJ1XPHUyFJBZn++WXpCqzh62PfDo/h4mBoaKIQQqqJTk/rzgfqNYZQoMUMkAAI0hhAQASWqbMYgAAAA==[0m> Task :bootJarMainClassName
+[8mha:////4MHniG3Tiw97emlJL2m+AVdfEvDfL1Yrjdu5MaK5vM0jAAAAYB+LCAAAAAAAAP9b85aBtbiIQSWjNKU4P0+vIKc0PTOvWC+9KDElJ1XPHUyFJBZn++WXpCqzh62PfDo/h4mBoaKIQQqqJTk/rzgfqNYZQoMUMkAAI0hhAQASWqbMYgAAAA==[0m> Task :bootJar
+[8mha:////4MHniG3Tiw97emlJL2m+AVdfEvDfL1Yrjdu5MaK5vM0jAAAAYB+LCAAAAAAAAP9b85aBtbiIQSWjNKU4P0+vIKc0PTOvWC+9KDElJ1XPHUyFJBZn++WXpCqzh62PfDo/h4mBoaKIQQqqJTk/rzgfqNYZQoMUMkAAI0hhAQASWqbMYgAAAA==[0m> Task :jar
+[8mha:////4MHniG3Tiw97emlJL2m+AVdfEvDfL1Yrjdu5MaK5vM0jAAAAYB+LCAAAAAAAAP9b85aBtbiIQSWjNKU4P0+vIKc0PTOvWC+9KDElJ1XPHUyFJBZn++WXpCqzh62PfDo/h4mBoaKIQQqqJTk/rzgfqNYZQoMUMkAAI0hhAQASWqbMYgAAAA==[0m> Task :assemble
+[8mha:////4MHniG3Tiw97emlJL2m+AVdfEvDfL1Yrjdu5MaK5vM0jAAAAYB+LCAAAAAAAAP9b85aBtbiIQSWjNKU4P0+vIKc0PTOvWC+9KDElJ1XPHUyFJBZn++WXpCqzh62PfDo/h4mBoaKIQQqqJTk/rzgfqNYZQoMUMkAAI0hhAQASWqbMYgAAAA==[0m> Task :compileTestJava
+[8mha:////4MHniG3Tiw97emlJL2m+AVdfEvDfL1Yrjdu5MaK5vM0jAAAAYB+LCAAAAAAAAP9b85aBtbiIQSWjNKU4P0+vIKc0PTOvWC+9KDElJ1XPHUyFJBZn++WXpCqzh62PfDo/h4mBoaKIQQqqJTk/rzgfqNYZQoMUMkAAI0hhAQASWqbMYgAAAA==[0m> Task :processTestResources
+[8mha:////4MHniG3Tiw97emlJL2m+AVdfEvDfL1Yrjdu5MaK5vM0jAAAAYB+LCAAAAAAAAP9b85aBtbiIQSWjNKU4P0+vIKc0PTOvWC+9KDElJ1XPHUyFJBZn++WXpCqzh62PfDo/h4mBoaKIQQqqJTk/rzgfqNYZQoMUMkAAI0hhAQASWqbMYgAAAA==[0m> Task :testClasses
+[8mha:////4MHniG3Tiw97emlJL2m+AVdfEvDfL1Yrjdu5MaK5vM0jAAAAYB+LCAAAAAAAAP9b85aBtbiIQSWjNKU4P0+vIKc0PTOvWC+9KDElJ1XPHUyFJBZn++WXpCqzh62PfDo/h4mBoaKIQQqqJTk/rzgfqNYZQoMUMkAAI0hhAQASWqbMYgAAAA==[0m> Task :test
+[8mha:////4MHniG3Tiw97emlJL2m+AVdfEvDfL1Yrjdu5MaK5vM0jAAAAYB+LCAAAAAAAAP9b85aBtbiIQSWjNKU4P0+vIKc0PTOvWC+9KDElJ1XPHUyFJBZn++WXpCqzh62PfDo/h4mBoaKIQQqqJTk/rzgfqNYZQoMUMkAAI0hhAQASWqbMYgAAAA==[0m> Task :jacocoTestReport
+[8mha:////4MHniG3Tiw97emlJL2m+AVdfEvDfL1Yrjdu5MaK5vM0jAAAAYB+LCAAAAAAAAP9b85aBtbiIQSWjNKU4P0+vIKc0PTOvWC+9KDElJ1XPHUyFJBZn++WXpCqzh62PfDo/h4mBoaKIQQqqJTk/rzgfqNYZQoMUMkAAI0hhAQASWqbMYgAAAA==[0m> Task :check
+[8mha:////4MHniG3Tiw97emlJL2m+AVdfEvDfL1Yrjdu5MaK5vM0jAAAAYB+LCAAAAAAAAP9b85aBtbiIQSWjNKU4P0+vIKc0PTOvWC+9KDElJ1XPHUyFJBZn++WXpCqzh62PfDo/h4mBoaKIQQqqJTk/rzgfqNYZQoMUMkAAI0hhAQASWqbMYgAAAA==[0m> Task :build
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 8.0.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+See https://docs.gradle.org/7.6.4/userguide/command_line_interface.html#sec:command_line_warnings
+
+[8mha:////4M34sOm6NEMxWXEYaZ5bPZ0WqG4ae3Zoyj80mjIhMY6KAAAAYx+LCAAAAAAAAP9b85aBtbiIQT2jNKU4P0+vIKc0PTOvWC+9KDElJ1XPHUz5l5Yk5+em+uWXpNbNmqZ4mHPZIiYGhooiBimoruT8vOJ8oHJnCA1SyAABjCCFBQBI197DZQAAAA==[0mBUILD SUCCESSFUL in 11s
+10 actionable tasks: 10 executed
+Build step 'Invoke Gradle script' changed build result to SUCCESS
+[Clinica-Production-Studios] $ /bin/sh -xe /tmp/jenkins9918720592862789755.sh
++ git tag
++ cut -d . -f 1
++ export MAJOR_VERSION=1
++ git tag
++ cut -d . -f 2
++ export MINOR_VERSION=0
++ git tag
++ cut -d . -f 3
++ export PATCH_VERSION=0
++ export NEW_MINOR_VERSION=1
++ export IMAGE_VERSION=1.1.0
++ echo ****
++ cut -d : -f 1
++ DOCKER_USERNAME=alexu33
++ echo ****
++ cut -d : -f 2
++ DOCKER_PASSWORD=parolaprodeng
++ docker login docker.io -u alexu33 -p parolaprodeng
+WARNING! Using --password via the CLI is insecure. Use --password-stdin.
+WARNING! Your password will be stored unencrypted in /root/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
++ docker push alexu33/hello-img:1.1.0
+The push refers to repository [docker.io/alexu33/hello-img]
+11da16730979: Preparing
+7b7f3078e1db: Preparing
+826c3ddbb29c: Preparing
+b626401ef603: Preparing
+9b55156abf26: Preparing
+293d5db30c9f: Preparing
+03127cdb479b: Preparing
+9c742cd6c7a5: Preparing
+293d5db30c9f: Waiting
+03127cdb479b: Waiting
+9c742cd6c7a5: Waiting
+7b7f3078e1db: Layer already exists
+9b55156abf26: Layer already exists
+826c3ddbb29c: Layer already exists
+293d5db30c9f: Layer already exists
+03127cdb479b: Layer already exists
+9c742cd6c7a5: Layer already exists
+b626401ef603: Layer already exists
+11da16730979: Pushed
+1.1.0: digest: sha256:719f4f0cdf6f5683db896d528226eac455746adafd1b4d0058e4795dc8186f88 size: 2007
+Finished: SUCCESS
