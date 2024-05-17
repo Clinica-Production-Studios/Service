@@ -13,6 +13,7 @@ pipeline {
         stage('Build & Test') {
             steps {
                 sh './gradlew clean build'
+                sh './start.sh'
             }
         }
 
