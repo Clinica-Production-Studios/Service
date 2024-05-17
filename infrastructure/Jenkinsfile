@@ -16,16 +16,6 @@ pipeline {
             }
         }
 
-        stage('Fetch tag')
-        {
-            steps {
-                script {
-                    sh "IMAGE_TAG=${env.IMAGE_TAG} docker compose up -d hello mongo"
-                }  
-            }
-
-        }
-
         stage('Tag image') {
             steps {
                 script {
@@ -44,6 +34,16 @@ pipeline {
                 sh "git tag ${env.IMAGE_TAG}"
                 sh "git push https://${GITHUB_TOKEN_PSW}@github.com/Clinica-Production-Studios/service.git ${env.IMAGE_TAG}"
             }
+        }
+
+        stage('Start containers')
+        {
+            steps {
+                script {
+                    "IMAGE_TAG=${env.IMAGE_TAG} docker compose up -d hello mongo"
+                }  
+            }
+
         }
     }
 }
