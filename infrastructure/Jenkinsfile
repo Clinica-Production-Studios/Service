@@ -13,7 +13,6 @@ pipeline {
         stage('Build & Test') {
             steps {
                 sh './gradlew clean build'
-                sh './start.sh'
             }
         }
 
@@ -21,7 +20,7 @@ pipeline {
         {
             steps {
                 script {
-                    "IMAGE_TAG=${env.IMAGE_TAG} docker compose up -d hello mongo"
+                    sh "IMAGE_TAG=${env.IMAGE_TAG} docker compose up -d hello mongo"
                 }  
             }
 
