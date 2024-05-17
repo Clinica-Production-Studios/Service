@@ -6,6 +6,10 @@ plugins {
 	id 'jacoco'
 }
 
+bootJar {
+    enabled = true
+}
+
 group = 'ro.unibuc'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
